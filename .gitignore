@@ -58,4 +58,4 @@ nb-configuration.xml
 
 .gradle
 build/
-/.nb-gradle/private/
+/.nb-gradle/
