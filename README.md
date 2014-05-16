@@ -2,7 +2,7 @@
 This game is "da bomb"
 
 # Build
-For ADT:
+## ADT
 
 * Create eclipse project
 ```bash
@@ -19,8 +19,7 @@ $ adt-bundle-linux-XXX/eclipse/eclipse
 		This has to be tested on connected device
 ```
 
-To enable auto completion:
-
+## To enable auto completion:
 Check "Java proposals" is ticked/checked under - Preferences - Java - Editor - Content Assist - Advanced.
 
 # Install
