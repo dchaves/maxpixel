@@ -33,15 +33,6 @@ public class ScreenPainter {
 
 		w = Gdx.graphics.getWidth();
 		h = Gdx.graphics.getHeight();
-		
-		walkSheet = new Texture(Gdx.files.internal("data/sprites/americanset.png"));
-		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_ROWS);
-		walkFrames = new TextureRegion[3 * 1];
-		walkFrames[0] = tmp[6][0];
-		walkFrames[1] = tmp[6][1];
-		walkFrames[2] = tmp[6][2];
-		walkAnimation = new Animation(0.1f, walkFrames);
-		statetime = 0f;
 	}
 
 	public void drawWorld() {
@@ -60,8 +51,7 @@ public class ScreenPainter {
 			message = "Nothing";
 		}
 
-		statetime += Gdx.graphics.getDeltaTime();
-		currentFrame = walkAnimation.getKeyFrame(statetime, true);
+		
 		
 		
 		batch.begin();
@@ -71,7 +61,6 @@ public class ScreenPainter {
 		float x = w / 2 - tb.width / 2;
 		float y = h / 2 + tb.height / 2;
 		font.drawMultiLine(batch, message, x, y);
-		batch.draw(currentFrame,50,50);
 		batch.end();
 	}
 
