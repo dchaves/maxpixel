@@ -1,6 +1,7 @@
 package org.ceremonia.maxpixel.output;
 
 import org.ceremonia.maxpixel.engine.WorldStatus;
+import org.ceremonia.maxpixel.engine.characters.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -17,13 +18,6 @@ public class ScreenPainter {
 	private BitmapFont font;
 	private int w;
 	private int h;
-	private Animation walkAnimation;
-	private Texture walkSheet; 
-	private TextureRegion[] walkFrames;
-	private TextureRegion currentFrame;
-	private static final int FRAME_COLS = 12;
-	private static final int FRAME_ROWS = 8;
-	private float statetime;
 
 	public ScreenPainter() {
 		batch = new SpriteBatch();
@@ -33,26 +27,25 @@ public class ScreenPainter {
 
 		w = Gdx.graphics.getWidth();
 		h = Gdx.graphics.getHeight();
+		
+		
 	}
 
 	public void drawWorld() {
-		WorldStatus status = WorldStatus.getInstance();
+		WorldStatus world = WorldStatus.getInstance();
 		String message = "";
 
 		for (int i = 0; i < 5; i++) {
-			if (status.touches.get(i).touched) {
+			if (world.touches.get(i).touched) {
 				message += "Finger:" + Integer.toString(i) + " touch at:"
-						+ Float.toString(status.touches.get(i).touchX) + ","
-						+ Float.toString(status.touches.get(i).touchY) + "\n";
+						+ Float.toString(world.touches.get(i).touchX) + ","
+						+ Float.toString(world.touches.get(i).touchY) + "\n";
 			}
 		}
 
 		if (message.length() == 0) {
 			message = "Nothing";
-		}
-
-		
-		
+		}		
 		
 		batch.begin();
 		Gdx.gl.glClearColor(0, 0, 0, 0);
@@ -61,6 +54,9 @@ public class ScreenPainter {
 		float x = w / 2 - tb.width / 2;
 		float y = h / 2 + tb.height / 2;
 		font.drawMultiLine(batch, message, x, y);
+		for(Player player : world.getPlayers()) {
+			batch.draw(player.getView(),player.positionx,player.positiony);
+		}
 		batch.end();
 	}
 

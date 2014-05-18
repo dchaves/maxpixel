@@ -1,0 +1,88 @@
+soldier_helmet_walk.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+soldier_helmet_back_walk
+  rotate: false
+  xy: 2, 369
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 1
+soldier_helmet_back_walk
+  rotate: false
+  xy: 2, 137
+  size: 24, 32
+  orig: 24, 32
+  offset: 0, 0
+  index: 2
+soldier_helmet_back_walk
+  rotate: false
+  xy: 2, 336
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 3
+soldier_helmet_front_walk
+  rotate: false
+  xy: 2, 303
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 1
+soldier_helmet_front_walk
+  rotate: false
+  xy: 2, 2
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: 2
+soldier_helmet_front_walk
+  rotate: false
+  xy: 2, 36
+  size: 26, 31
+  orig: 26, 31
+  offset: 0, 0
+  index: 3
+soldier_helmet_left_walk
+  rotate: false
+  xy: 2, 270
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 1
+soldier_helmet_left_walk
+  rotate: false
+  xy: 2, 103
+  size: 24, 32
+  orig: 24, 32
+  offset: 0, 0
+  index: 2
+soldier_helmet_left_walk
+  rotate: false
+  xy: 2, 237
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 3
+soldier_helmet_right_walk
+  rotate: false
+  xy: 2, 204
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 1
+soldier_helmet_right_walk
+  rotate: false
+  xy: 2, 69
+  size: 24, 32
+  orig: 24, 32
+  offset: 0, 0
+  index: 2
+soldier_helmet_right_walk
+  rotate: false
+  xy: 2, 171
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: 3
