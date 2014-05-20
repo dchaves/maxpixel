@@ -1,31 +1,27 @@
 package org.ceremonia.maxpixel;
 
-import org.ceremonia.maxpixel.engine.BasicEngine;
-import org.ceremonia.maxpixel.input.SimpleTouchInput;
-import org.ceremonia.maxpixel.output.ScreenPainter;
-
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MaxPixel implements ApplicationListener {
-	private InputProcessor inputprocessor;
-	private BasicEngine engine;
-	private ScreenPainter painter;
+public class MaxPixel extends Game {
+	protected SpriteBatch batch;
+	protected BitmapFont font;
 
 	@Override
 	public void create() {
-		inputprocessor = new SimpleTouchInput();
-		engine = new BasicEngine();
-		painter = new ScreenPainter();
+		batch = new SpriteBatch();
+		font = new BitmapFont(Gdx.files.internal("data/fonts/arial-15.fnt"), Gdx.files.internal("data/fonts/arial-15.png"), false, true);
+		font.setColor(Color.WHITE);
 		
-		Gdx.input.setInputProcessor(inputprocessor);
+		this.setScreen(new MainMenuScreen(this));
 	}
 
 	@Override
-	public void render() {		
-		engine.update();
-		painter.drawWorld();
+	public void render() {
+		super.render();
 	}
 
 	@Override
@@ -42,12 +38,12 @@ public class MaxPixel implements ApplicationListener {
 
 	@Override
 	public void dispose() {
-		painter.dispose();
+		batch.dispose();
+		font.dispose();
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		painter = new ScreenPainter();
+
 	}
 }
