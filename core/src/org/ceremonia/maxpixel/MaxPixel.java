@@ -7,6 +7,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MaxPixel extends Game {
+	// GAME GENERAL PROPERTIES
+	static final int WIDTH  = 640;
+    static final int HEIGHT = 480;
+	
+    // Class variables
 	protected SpriteBatch batch;
 	protected BitmapFont font;
 
