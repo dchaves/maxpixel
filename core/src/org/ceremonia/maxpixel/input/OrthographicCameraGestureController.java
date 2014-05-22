@@ -3,28 +3,32 @@ package org.ceremonia.maxpixel.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.BoundingBox;
 
 public class OrthographicCameraGestureController implements GestureListener {
-	private float xlimit_max;
-	private float xlimit_min;
-	private float ylimit_max;
-	private float ylimit_min;
 	private float velX, velY;
 	private boolean flinging = false;
 	private float initialScale = 1;
 	private OrthographicCamera camera;
 
+	private float MAPWIDTH;
+	private float MAPHEIGHT;
+	private float VIEWWIDTH;
+	private float VIEWHEIGHT;
+
 	private OrthographicCameraGestureController() {
 	}
 
-	public OrthographicCameraGestureController(OrthographicCamera cam, float xmax, float xmin, float ymax, float ymin) {
+	public OrthographicCameraGestureController(OrthographicCamera cam, float viewwidth, float viewheight, float xmax, float ymax) {
 		this();
 		this.camera = cam;
-		this.xlimit_max = xmax;
-		this.xlimit_min = xmin;
-		this.ylimit_max = ymax;
-		this.ylimit_min = ymin;
+		this.MAPWIDTH = xmax;
+		this.MAPHEIGHT = ymax;
+		this.VIEWWIDTH = viewwidth;
+		this.VIEWHEIGHT = viewheight;
 	}
 
 	public boolean touchDown(float x, float y, int pointer, int button) {
@@ -58,6 +62,11 @@ public class OrthographicCameraGestureController implements GestureListener {
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
 		// Gdx.app.log("GestureDetectorTest", "pan at " + x + ", " + y);
 		camera.position.add(-deltaX * camera.zoom * 0.1f, deltaY * camera.zoom * 0.1f, 0);
+
+		camera.position.x = MathUtils.clamp(camera.position.x, VIEWWIDTH / 2, (MAPWIDTH - VIEWWIDTH) / 2);
+		camera.position.y = MathUtils.clamp(camera.position.y, VIEWHEIGHT / 2, (MAPHEIGHT - VIEWHEIGHT) / 2);
+		Gdx.app.log("CAMERA", "Camera moved to " + camera.position.x + "," + camera.position.y);
+		// camera.update();
 		return true;
 	}
 

@@ -16,7 +16,7 @@ public class OrthographicCameraInputProcessor implements InputProcessor {
 	private OrthographicCameraInputProcessor() {
 	}
 
-	public OrthographicCameraInputProcessor(OrthographicCamera cam, float xmax, float ymax) {
+	public OrthographicCameraInputProcessor(OrthographicCamera cam, float viewwidth , float viewheight, float xmax, float ymax) {
 		this();
 		this.camera = cam;
 		this.xtop = new BoundingBox(new Vector3(xmax, 0, 0), new Vector3(xmax, ymax, 0));
