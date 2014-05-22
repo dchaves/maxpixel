@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.math.collision.BoundingBox;
 
 public class OrthographicCameraGestureController implements GestureListener {
 	private float velX, velY;
@@ -62,11 +60,8 @@ public class OrthographicCameraGestureController implements GestureListener {
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
 		// Gdx.app.log("GestureDetectorTest", "pan at " + x + ", " + y);
 		camera.position.add(-deltaX * camera.zoom * 0.1f, deltaY * camera.zoom * 0.1f, 0);
-
-		camera.position.x = MathUtils.clamp(camera.position.x, VIEWWIDTH / 2, (MAPWIDTH - VIEWWIDTH) / 2);
-		camera.position.y = MathUtils.clamp(camera.position.y, VIEWHEIGHT / 2, (MAPHEIGHT - VIEWHEIGHT) / 2);
-		Gdx.app.log("CAMERA", "Camera moved to " + camera.position.x + "," + camera.position.y);
-		// camera.update();
+		clip();
+		camera.update();
 		return true;
 	}
 
@@ -80,7 +75,6 @@ public class OrthographicCameraGestureController implements GestureListener {
 	public boolean zoom(float originalDistance, float currentDistance) {
 		float ratio = originalDistance / currentDistance;
 		camera.zoom = initialScale * ratio;
-		System.out.println(camera.zoom);
 		return true;
 	}
 
@@ -99,5 +93,10 @@ public class OrthographicCameraGestureController implements GestureListener {
 			if (Math.abs(velY) < 0.01f)
 				velY = 0;
 		}
+	}
+
+	private void clip() {
+		camera.position.x = MathUtils.clamp(camera.position.x, VIEWWIDTH * camera.zoom, MAPWIDTH - (VIEWWIDTH * camera.zoom));
+		camera.position.y = MathUtils.clamp(camera.position.y, VIEWHEIGHT * camera.zoom, MAPHEIGHT - (VIEWHEIGHT * camera.zoom));
 	}
 }
