@@ -1,6 +1,10 @@
 # Project name
 This game is "da bomb"
 
+# RabbitMQ on Android
+To be checked later
+``` http://simonwdixon.wordpress.com/2011/06/03/getting-started-with-rabbitmq-on-android-part-1/
+
 # Build
 ## ADT
 
