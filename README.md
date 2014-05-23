@@ -1,10 +1,13 @@
 # Project name
 This game is "da bomb"
 
-# RabbitMQ on Android
+# Interesting links for Android 
 
-To be checked later
 [RabbitMQ on Android](http://simonwdixon.wordpress.com/2011/06/03/getting-started-with-rabbitmq-on-android-part-1/)
+
+[Shared Preferences](http://www.sgoliver.net/blog/?p=1731)
+
+[Automatic preferences menu](http://www.sgoliver.net/blog/?p=2149)
 
 # Build
 ## ADT
