@@ -59,7 +59,7 @@ public class OrthographicCameraGestureController implements GestureListener {
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
 		// Gdx.app.log("GestureDetectorTest", "pan at " + x + ", " + y);
-		camera.position.add(-deltaX * camera.zoom * 0.1f, deltaY * camera.zoom * 0.1f, 0);
+		camera.position.add(-deltaX * camera.zoom * 0.02f, deltaY * camera.zoom * 0.02f, 0);
 		clip();
 		camera.update();
 		return true;

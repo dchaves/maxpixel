@@ -9,6 +9,8 @@ This game is "da bomb"
 
 [Automatic preferences menu](http://www.sgoliver.net/blog/?p=2149)
 
+[Android examples](http://www.sgoliver.net/blog/?page_id=3011)
+
 # Build
 ## ADT
 
