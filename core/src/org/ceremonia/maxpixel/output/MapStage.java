@@ -42,14 +42,13 @@ public class MapStage extends Stage {
 		
 		this.setViewport(new FitViewport(640, 480, camera));
 		
-		controller = new OrthographicCameraGestureController(camera, VIEWWIDTH, VIEWHEIGHT, MAPWIDTH, MAPHEIGHT);
-		processor = new OrthographicCameraInputProcessor(camera, VIEWWIDTH, VIEWHEIGHT, MAPWIDTH, MAPHEIGHT);
+		controller = new OrthographicCameraGestureController(camera, VIEWWIDTH, VIEWHEIGHT, MAPWIDTH * (MAPWIDTH * SCALE), MAPHEIGHT * MAPHEIGHT * SCALE);
+		processor = new OrthographicCameraInputProcessor(camera, VIEWWIDTH, VIEWHEIGHT, MAPWIDTH * (MAPWIDTH * SCALE), MAPHEIGHT * MAPHEIGHT * SCALE);
+		gestureDetector = new GestureDetector(controller);
 		multiplexer = new InputMultiplexer();
-		gestureDetector = new GestureDetector(20, 0.5f, 1, 0.15f, controller);
 		multiplexer.addProcessor(this);
 		multiplexer.addProcessor(gestureDetector);
 		multiplexer.addProcessor(processor);
-
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 	
@@ -59,7 +58,7 @@ public class MapStage extends Stage {
 		renderer.dispose();
 	}
 	
-	public void draw() {		
+	public void draw() {
 		renderer.render();
 		camera.update();
 		renderer.setView(camera);
